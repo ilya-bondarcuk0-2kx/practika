@@ -1,60 +1,65 @@
-﻿#include <iostream>
-using namespace std;
-int** FillDualDynamicArray(int** Matrix, const int rows, const int cols)
+#include <iostream>
+	using namespace std;
+void FillDualDynamicArray(int** matrix, const int rows, const int cols)
 {
-	Matrix = new int* [rows];
 	for (int i = 0; i < rows; i++)
-		Matrix[i] = new int[cols];
+		matrix[i] = new int[cols];
 	for (int i = 0; i < rows; i++)
 	{
 		for (int j(0); j < cols; j++)
-			M1[i][j] = 10 + rand() % 91;
+			matrix[i][j] = 10 + rand() % 91;
 	}
+	
 }
-void ShowDualDynamicArray(const int** Matrix, const int rows, const int cols)
+void ShowDualDynamicArray(int** matrix, const int rows, const int cols)
 {
 	for (int i = 0; i < rows; i++)
 	{
 		cout << "| ";
 		for (int j = 0; j < cols; j++)
 		{
-			cout << Matrix[i][j];
+			cout << matrix[i][j];
 			if (j < cols - 1) cout << " ";
 			else cout << " |" << endl;
 		}
 	}
+	cout << endl;
 }
-int** ResultOfMultDualDynamicArray(int** Matrix1, int** Matrix2,int rows,int cols)
+void ResultOfMultDualDynamicArray(int **matrix1, int** matrix2, int** resultMatrix, int rows, int cols2, int rows1)
 {
-	int** M3 = new int* [a];
-	for (int i = 0; i < a; i++)
-		M3[i] = new int[d];
-	for (int i = 0; i < a; i++)
+	for (int i = 0; i < rows; i++)
 	{
-		for (int j = 0; j < d; j++)
-			M3[i][j] = 0;
-
+		resultMatrix[i] = new int[cols2];
 	}
 	for (int i = 0; i < rows; i++)
 	{
-		for (int j = 0; j < cols; j++)
+		for (int j = 0; j < cols2; j++)
 		{
-			for (int m = 0; m < b; m++)
-				M3[i][j] += Matrix1[i][m] * Matrix2[m][j];
+			resultMatrix[i][j] = 0;
 		}
 	}
-	return M3;
+	
+	for (int i = 0; i < rows; i++)
+	{
+		for (int j = 0; j < cols2; j++)
+		{
+			for (int m = 0; m < rows1; m++)
+				resultMatrix[i][j] += matrix1[i][m] * matrix2[m][j];
+		}
+	}
 }
-void RemoveUsedMemory(int** Matrix,int rows)
+void RemoveUsedMemory(int** matrix, int rows)
 {
 	for (int i = 0; i < rows; i++)  // сначала элементы строк
 	{
-		delete[] Matrix[i];
+		delete[] matrix[i];
 	}
-	delete[]Matrix;
+	delete[]matrix;
+	cout << "\nПамять очищена" << endl;
 }
 int main() // матрицы произвольного размера
 {
+	setlocale(LC_ALL, "");
 	int a = 0, b = 0, c = 0, d = 0; // размерность матриц
 	do
 	{
@@ -69,12 +74,16 @@ int main() // матрицы произвольного размера
 		}
 	} while (b != c);
 
-	int** M1 = NULL;  
-	int** M2 = NULL;
+	int **M1 = new int*[a];
+	int **M2 = new int*[c];
+	int **M3 = new int*[a];
 	FillDualDynamicArray(M1, a, b);
 	FillDualDynamicArray(M2, c, d);
 	ShowDualDynamicArray(M1, a, b);
 	ShowDualDynamicArray(M2, c, d);
-	ResultOfMultDualDynamicArray(M1, M2,  a, d);
-	RemoveUsedMemory(M1, )
+	ResultOfMultDualDynamicArray(M1, M2,M3, a, d, c);
+	ShowDualDynamicArray(M3, a, d);
+	RemoveUsedMemory(M1, a);
+	RemoveUsedMemory(M2, c);
+	RemoveUsedMemory(M3, a);
 }
