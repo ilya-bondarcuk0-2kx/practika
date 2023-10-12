@@ -35,7 +35,7 @@ int maximin(int** arr, const int rows , const int sizes[], const int size)
 }
 
 int main() {
-    system("chcp 65001");
+    setlocale(LC_ALL, "");
     int rows = 5, cols;
     const int size = 5;
     int sizes[size]{1, 5, 4, 7, 9};
