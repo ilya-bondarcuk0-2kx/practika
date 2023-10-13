@@ -1,5 +1,5 @@
 #include <iostream>
-#include <multilyOrAdd.h>
+#include <multiplyOrAdd.h>
 
 using namespace std;
 
