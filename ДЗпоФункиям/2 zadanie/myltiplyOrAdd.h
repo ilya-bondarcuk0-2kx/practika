@@ -1,0 +1,1 @@
+double myltiplyOrAdd(double, double, bool = true);
