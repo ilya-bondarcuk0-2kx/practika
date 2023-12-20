@@ -1,0 +1,8 @@
+﻿  Application.cpp
+  Chat.cpp
+C:\Users\tanya\source\repos\Chat\Chat\Application.cpp(61,26): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+C:\Users\tanya\source\repos\Chat\Chat\Chat.cpp(96,35): warning C4101: ex: неиспользованная локальная переменная
+  User.cpp
+  main.cpp
+  Создание кода...
+  Chat.vcxproj -> C:\Users\tanya\source\repos\Chat\x64\Debug\Chat.exe
